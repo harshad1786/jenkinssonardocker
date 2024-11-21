@@ -1,20 +1,17 @@
-# Use the official Node.js 16 image as the base image
-FROM node:16
+# Use the official Nginx image as the base image
+FROM nginx:alpine
 
 # Set the working directory inside the container
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+# Remove the default Nginx website
+RUN rm -rf ./*
 
-# Install dependencies
-RUN npm install
-
-# Copy the rest of the application code
+# Copy the static website files to the container
 COPY . .
 
-# Expose the port the app runs on
-EXPOSE 3000
+# Expose the default Nginx port
+EXPOSE 80
 
-# Define the command to start the app
-CMD ["npm", "start"]
+# Start Nginx
+CMD ["nginx", "-g", "daemon off;"]
