@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: harshad1786/mohar-test02
+  name: mohar-test02
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: harshad1786/mohar-test02
+      app: mohar-test02
   template:
     metadata:
       labels:
-        app: harshad1786/mohar-test02
+        app: mohar-test02
     spec:
       containers:
         - name: mohar
