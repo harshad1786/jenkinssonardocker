@@ -1,24 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mohar-test02
+  name: mohar-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: mohar-test02
+      app: mohar
   template:
     metadata:
       labels:
-        app: mohar-test02
+        app: mohar
     spec:
       containers:
         - name: mohar
-          image: harshad1786/mohar-test02:latest
+          image: mohar:latest
           ports:
-            - containerPort: 8001
+            - containerPort: 8081
           env:
             - name: PORT
-              value: "8001"
----
-
+              value: "8081"
